@@ -83,10 +83,13 @@ public class BatchRevoke {
         String changeReason = "System Data Reset";
         String ip = "https://api.trunomi.com";
 
-        if (args.length < 0){
-            System.out.println("Missing parameters. run as <RevokeConsents jwtToken, reason(optional) apiEndpoint(optional)'>");
-            System.out.println("If no reason is specified '"+changeReason +"' is used");
-            System.out.println("If no apiEndpoint is specified https://api.trunomi.com is used");
+        if (args.length == 0){
+            System.out.println("**Missing parameters**");
+            System.out.println("*Syntax:* java -jar sample-utils-1.0-SNAPSHOT-jar-with-dependencies.jar jwtToken, \"reason(optional)\" apiEndpoint(optional)");
+            System.out.println(" - If no reason is specified '"+changeReason +"' is used");
+            System.out.println(" - If no apiEndpoint is specified https://api.trunomi.com is used");
+            System.out.println("");
+            
             System.exit(-1);
         }
         if ( args.length > 0)
@@ -97,12 +100,15 @@ public class BatchRevoke {
 
         if ( args.length > 2)
             ip=args[2];
-
+ 
 
         BatchRevoke updater = new BatchRevoke();
         updater.setApiEndpoint(ip);
         updater.setjWtToken(jwtToken);
-
+       
+        logger.info("Running batch revoke against API endpoint: " +ip);
+        logger.info("Using reason " +changeReason);
+        
         ArrayList<String> contexts = new ArrayList<>();
 
         try {
