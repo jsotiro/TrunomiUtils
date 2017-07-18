@@ -1,0 +1,23 @@
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# IDE files
+*.iml
+
+# output directories
+.idea/
+target/
+out/
+
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
